@@ -1,7 +1,7 @@
-USE [TubularDataSystems_6_flake141007]
+USE [TubularDataSystems_SIW141021]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_INVSTK_by_Filter2]    Script Date: 11/6/2014 8:30:04 AM ******/
+/****** Object:  StoredProcedure [dbo].[sp_INVSTK_by_Filter2]    Script Date: 11/6/2014 8:32:53 AM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -157,7 +157,7 @@ AS
 
         --SET @SQLWhere = '((Quantity <> 0) Or (Length <> 0)) '
         
-        SET @SQLWhere = '((Quantity <> 0) Or (Length <> 0)  or ( type  in (''x-over'',''other'', ''pup joints'') ))'
+        SET @SQLWhere = '((Quantity <> 0) Or (Length <> 0) or (OpenRcvr > 0)  or ( type  in (''x-over'',''other'', ''pup joints'') ))'
         
         
       
@@ -400,6 +400,7 @@ AS
       ErrorHandler:
       RETURN ( @@ERROR )
          
+
 
 GO
 
